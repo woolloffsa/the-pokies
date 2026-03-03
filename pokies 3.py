@@ -6,7 +6,7 @@ import random
 # Create reels and symbol bank lists
 reels = []
 current_reel = []
-symbol_bank = ["🍒", "7"]
+symbol_bank = ["🍒", "7", "🔔", "💎", "💲"]
 
 spin = input("spin?(y/n) ")
 
@@ -17,9 +17,12 @@ while spin == "y":
             random_symbol = random.choice(symbol_bank)
             current_reel.append(random_symbol)
         reels.append(current_reel)
-    # Checks for a straight across win
-    if reels[0][1] == reels[1][1] and reels[1][1] == reels[2][1]:
+    diagonal_line = [reels[0][0], reels[1][1], reels[2][2]]
+    straight_line = [reels[0][1], reels[1][1], reels[2][1]]
+    if diagonal_line.count(diagonal_line[0]) == 3:  # Checks for a diagonal across win
         print("You Win!!")
+    if straight_line.count(straight_line[0]) == 3:
+        print("You Win")
     else:
         print("No win")
     reels = []
