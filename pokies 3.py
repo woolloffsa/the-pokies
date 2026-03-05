@@ -17,13 +17,19 @@ while spin == "y":
             random_symbol = random.choice(symbol_bank)
             current_reel.append(random_symbol)
         reels.append(current_reel)
-    diagonal_line = [reels[0][0], reels[1][1], reels[2][2]]
+    # Lists of winning patterns
+    diagonal_line = [reels[0][0], reels[1][1], reels[2][2]] 
     straight_line = [reels[0][1], reels[1][1], reels[2][1]]
-    if diagonal_line.count(diagonal_line[0]) == 3:  # Checks for a diagonal across win
+    # Checks for a win
+    if diagonal_line.count(diagonal_line[0]) == 3:  
         print("You Win!!")
-    if straight_line.count(straight_line[0]) == 3:
+    elif straight_line.count(straight_line[0]) == 3:
         print("You Win")
     else:
         print("No win")
+    row = 0
+    for i in range(3):
+        print(reels[0][row], reels[1][row], reels[2][row])
+        row += 1
     reels = []
     spin = input("spin?(y/n) ")
